@@ -1,2 +1,59 @@
+body{
+    background-image: url('../img/fond_ecran.jpg');
+    background-size: 100vw 100vh;
+}
+
 /* le sélecteur pour tous les h1*/
-h1{color:tomato; font-weight: 900;}
+h1{
+    color:rgb(30, 19, 17); 
+    font-weight: 900;
+}
+
+/* sélecteur pour l'id formulaire */
+#formulaire{
+    /* déclinaison de border en 3 propriétés spécifiques
+    border-width: 1px;
+    border-style: solid;
+    border-color: black; */
+    border: 1px solid black;
+    border-radius: 7px
+    /* déclinaison du border radius sur un seul coin
+     border-top-left-radius:30px; */
+}
+
+/* le sélecteur pour la classe postit*/
+.postit{
+    background-color: #ffffa5;
+    border-bottom-right-radius:30px;
+    width:20%;
+    min-width: 300px;
+    display: inline-block;
+    /* display: inline-block; => permet de conserver le format bloc tout en mettant plusieurs par ligne si possible */
+    margin-left: 15px;
+    /* Margin = marge externe */
+    padding: 10px;
+    /* padding = marge interne */
+    border: 1px gray;
+    box-shadow: 15px 15px 25px gainsboro;
+    /* box-shadow permet de mettre une ombre, il existe aussi en texte-shadow */
+}   
+.postit-titre{
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: underline tomato;
+    margin-bottom: 8px;
+}
+
+/* selection des .datetime uniquement dans un .postit */
+.postit .datetime{
+    font-weight: 900;
+    font-size: x-large;
+}
+
+/* Pour faire un style css utilisable uniquement lors d'une impression */
+@media print{
+    body{
+        background-image: none;
+        background-color: teal;
+    }
+}
