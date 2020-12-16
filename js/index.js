@@ -13,6 +13,17 @@ function initialisationJS(prenom) {
 // usage d'une fonction
 initialisationJS('Arthur');
 // on définit que la variable prenom à pour cette initialisation la valeur 'Arthur'
-function formSubmited(params) {
-    console.log('Mon formulaire est "submit"')
+function formSubmited(evt) {
+    evt.preventDefault();
+    // C'est une fonction qui demande de ne pas faire le fonctionnement normal
+    console.log('Mon formulaire est "submit"');
+    console.log(evt.target[0].value);
+    console.log(evt.target[1].value);
+    console.log(evt.target[2].value);
+    console.log(evt.target[3].value);
 }
+document.querySelector('form').addEventListener('submit',formSubmited)
+// on sélectionne dans le document. On utilise la fonction querySelector pour sélectionner une balise form. 
+// A cette balise j'appelle une fonction d'écouteur d'evenement. 
+// Je donne un nom à cette fonction : submit. Puis je lui dis quelle fonction à executer (sans l'executer de suite).
+
