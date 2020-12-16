@@ -10,3 +10,6 @@ Ajout d'une feuille CSS
 ## Etape 3
 Mise en place des propriétés CSS
 + Modification de la section formulaire
+
+## Etape 4
+Préparation du formulaire en HTML avec utilisation des bonnes balises

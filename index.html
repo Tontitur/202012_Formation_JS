@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Post-it</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <div id="main">
         <div id="editor">
             <div id="formulaire">
-                <h1>Titre de la note :</h1>
-                <div>Mon titre de la note<br/></div>
-                <span class="datetime">date : 2020-01-01 heure : 12:00:00</span>
-                <h2>Description :</h2>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure minus enim eaque corporis architecto
-                reprehenderit voluptatibus. Eaque corrupti beatae sequi reiciendis accusantium ab dolores repudiandae
-                dolorem, provident voluptates, fuga laudantium.
+                <form action="#" method="GET" name="form-editor">
+                    <h1>Titre de la note :</h1>
+                    <input type="text" name="title" id="editor-title" placeholder="Saisissez le titre" /><br /><br />
+                    <div style="display: inline-block;">
+                        <h4>date: <input type="date" name="date" id="editor-date" /></h4>
+                    </div>
+                    <div style="display: inline-block;">
+                        <h4>heure: <input type="time" name="time" id="editor-time" /></h4>
+                    </div>
 
+                    <h2>Description :</h2>
+                    <textarea name="description" id="editor-description"
+                        placeholder="Saisissez la description"></textarea>
+                    <div style="text-align: center;">
+                        <input type="reset" value="Reinit." /> <input type="submit" value="valider" />
+                    </div>
+                </form>
             </div>
             <hr />
             <div id="list">
                 <div class="postit">
-                    <div class="postit-titre">Mon titre de la note<br/></div>
+                    <div class="postit-titre">Mon titre de la note<br /></div>
                     <span class="datetime">date : 2020-01-01 heure : 12:00:00</span>
                     <h2>Description :</h2>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure minus enim eaque corporis architecto
@@ -32,7 +41,7 @@
                     repudiandae dolorem, provident voluptates, fuga laudantium.
                 </div>
                 <div class="postit">
-                    <div class="postit-titre">Mon titre de la note<br/></div>
+                    <div class="postit-titre">Mon titre de la note<br /></div>
                     <span class="datetime">date : 2020-01-01 heure : 12:00:00</span>
                     <h2>Description :</h2>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure minus enim eaque corporis architecto
