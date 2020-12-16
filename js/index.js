@@ -1,7 +1,7 @@
 // alert('le fichier est bien en place');
-addEventListener('load',function(evt) {
+addEventListener('load', function (evt) {
     initialisationJS('Arthur');
-    document.querySelector('form').addEventListener('submit',formSubmited)
+    document.querySelector('form').addEventListener('submit', formSubmited)
     //on crée une fontion anonyme(qui ne pourra pas être ré-executée) lors de l'évenement chargement complet du DOM.
     //cette fonction dit d'exercer toutes les fonctions de la page 
 });
@@ -28,7 +28,7 @@ function formSubmited(evt) {
     console.log(evt.target[1].value);
     console.log(evt.target[2].value);
     console.log(evt.target[3].value);
-    var monFormulaire=document.forms['form-editor'];
+    var monFormulaire = document.forms['form-editor'];
     // var dareFormated=moment(monFormulaire['date'].value,'DD MM YYYY')
     createPostit(
         monFormulaire['title'].value,
@@ -50,16 +50,19 @@ function formSubmited(evt) {
  * @param {string} heure heure ISO HH:MM:SS
  * @param {string} description creation de la note
  */
-function createPostit(titre,date,heure,description) {
-    var postit=document.createElement('div');
+function createPostit(titre, date, heure, description) {
+    var postit = document.createElement('div');
     postit.classList.add('postit');
     // ajout d'une classe dans la la liste de classe d'un élément. On peut aussi remplacer add par remove
-    postit.innerHTML='<div class="close"><img src="img/close.png" /></div>\
-    <div class="postit-titre">'+titre+'<br /></div>\
-    <span class="datetime">date : '+date+' </span><span class="datetime">heure : '+heure+'</span>\
-    <h2>Description :</h2>'+description;
+    postit.innerHTML = '<div class="close"><img src="img/close.png" /></div>\
+    <div class="postit-titre">'+ titre + '<br /></div>\
+    <span class="datetime">date : '+ date + ' </span><span class="datetime">heure : ' + heure + '</span>\
+    <h2>Description :</h2>'+ description;
+    
+    //selection à partir postit de .close img, puis addEventListener('click',deletePostit)
+postit.querySelector('.close img').addEventListener('click',deletePostit)
 
-    var liste=document.querySelector('#list');
+    var liste = document.querySelector('#list');
     // selection de la liste de postit -> Reprise de la classe list
 
     list.append(postit);
@@ -67,5 +70,5 @@ function createPostit(titre,date,heure,description) {
 }
 
 function deletePostit(evt) {
-    console.log('evenement lié à la suppression d\'une note',evt)
+    console.log('evenement lié à la suppression d\'une note', evt)
 }
