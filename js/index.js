@@ -54,7 +54,8 @@ function createPostit(titre,date,heure,description) {
     var postit=document.createElement('div');
     postit.classList.add('postit');
     // ajout d'une classe dans la la liste de classe d'un élément. On peut aussi remplacer add par remove
-    postit.innerHTML='<div class="postit-titre">'+titre+'<br /></div>\
+    postit.innerHTML='<div class="close"><img src="img/close.png" /></div>\
+    <div class="postit-titre">'+titre+'<br /></div>\
     <span class="datetime">date : '+date+' </span><span class="datetime">heure : '+heure+'</span>\
     <h2>Description :</h2>'+description;
 
@@ -63,4 +64,8 @@ function createPostit(titre,date,heure,description) {
 
     list.append(postit);
     //ajout dans la liste de l'élement 
+}
+
+function deletePostit(evt) {
+    console.log('evenement lié à la suppression d\'une note',evt)
 }
