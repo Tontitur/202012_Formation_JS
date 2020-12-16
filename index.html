@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Post-it</title>
     <link rel="stylesheet" href="css/style.css" />
+     <!-- Mauvaise pratique d'insertion du JS
+    <script>
+            alert('Ma premiere ligne JS')
+    </script>
+     -->
+     <script src="js/index.js"></script>
 </head>
 
 <body>
     <div id="main">
         <div id="editor">
             <div id="formulaire">
-                <form action="#" method="GET" name="form-editor">
+                <form action="#" method="" name="form-editor">
                     <h1>Titre de la note :</h1>
                     <input type="text" name="title" id="editor-title" placeholder="Saisissez le titre" /><br /><br />
                     <div style="display: inline-block;">
@@ -50,6 +56,10 @@
                 </div>
             </div>
         </div>
+        <!-- <script>
+            alert('Ma premiere ligne JS')
+            console.log(document.querySelector("#formulaire"))
+    </script> -->
 </body>
 
 </html>

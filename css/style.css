@@ -38,6 +38,14 @@ h2 {
     text-align: center;
 }
 
+#formulaire h1 {
+    margin: 0;
+}
+
+#formulaire h4 {
+    margin: 0;
+}
+
 #editor {
     margin-bottom: 25px;
 }
