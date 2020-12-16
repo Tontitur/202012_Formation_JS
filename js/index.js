@@ -1,5 +1,5 @@
 // alert('le fichier est bien en place');
-addEventListener('loadend',function(evt) {
+addEventListener('load',function(evt) {
     initialisationJS('Arthur');
     document.querySelector('form').addEventListener('submit',formSubmited)
     //on crée une fontion anonyme(qui ne pourra pas être ré-executée) lors de l'évenement chargement complet du DOM.
@@ -22,12 +22,21 @@ initialisationJS('Arthur');
 // on définit que la variable prenom à pour cette initialisation la valeur 'Arthur'
 function formSubmited(evt) {
     evt.preventDefault();
-    // C'est une fonction qui demande de ne pas faire le fonctionnement normal
+    // C'est une fonction qui demande de ne pas faire le fonctionnement normal : rechargement de la page
     console.log('Mon formulaire est "submit"');
     console.log(evt.target[0].value);
     console.log(evt.target[1].value);
     console.log(evt.target[2].value);
     console.log(evt.target[3].value);
+    var monFormulaire=document.forms['form-editor'];
+    // var dareFormated=moment(monFormulaire['date'].value,'DD MM YYYY')
+    createPostit(
+        monFormulaire['title'].value,
+        monFormulaire['date'].value,
+        monFormulaire['time'].value,
+        monFormulaire['description'].value
+    );
+
 }
 // document.querySelector('form').addEventListener('submit',formSubmited)
 // // on sélectionne dans le document. On utilise la fonction querySelector pour sélectionner une balise form. 
