@@ -16,3 +16,6 @@ Préparation du formulaire en HTML avec utilisation des bonnes balises
 
 ## Etape 5 
 Création du fichier JS + première fonction Alerte
+
+## Etape 6
+Sélection d'une balise et modification du contenu grâce à innerHTML

@@ -1,4 +1,7 @@
 // alert('le fichier est bien en place');
+// On crée une variable et on affecte la valeur à DeviceOrientationEvent. 
 var balise=document.querySelector('#jsload');
-balise.style.BackGroundColor="GREEN";
+// modification du contenu html de la balise dans la var
+balise.style.backgroundColor="GREEN";
+// Modif du style CSS dans la varaiable
 balise.innerHTML="JS CHARGE"
