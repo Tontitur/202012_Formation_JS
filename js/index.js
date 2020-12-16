@@ -1,1 +1,1 @@
-alert('le fichier est bien en place')
+alert('le fichier est bien en place');
