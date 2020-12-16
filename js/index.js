@@ -1,4 +1,11 @@
 // alert('le fichier est bien en place');
+addEventListener('loadend',function(evt) {
+    initialisationJS('Arthur');
+    document.querySelector('form').addEventListener('submit',formSubmited)
+    //on crée une fontion anonyme(qui ne pourra pas être ré-executée) lors de l'évenement chargement complet du DOM.
+    //cette fonction dit d'exercer toutes les fonctions de la page 
+});
+
 // declaration d'une fonction
 function initialisationJS(prenom) {
     // On crée une variable et on affecte la valeur à DeviceOrientationEvent. 
