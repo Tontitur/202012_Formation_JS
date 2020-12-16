@@ -29,8 +29,14 @@ function formSubmited(evt) {
     console.log(evt.target[2].value);
     console.log(evt.target[3].value);
 }
-document.querySelector('form').addEventListener('submit',formSubmited)
-// on sélectionne dans le document. On utilise la fonction querySelector pour sélectionner une balise form. 
-// A cette balise j'appelle une fonction d'écouteur d'evenement. 
-// Je donne un nom à cette fonction : submit. Puis je lui dis quelle fonction à executer (sans l'executer de suite).
+// document.querySelector('form').addEventListener('submit',formSubmited)
+// // on sélectionne dans le document. On utilise la fonction querySelector pour sélectionner une balise form. 
+// // A cette balise j'appelle une fonction d'écouteur d'evenement. 
+// // Je donne un nom à cette fonction : submit. Puis je lui dis quelle fonction à executer (sans l'executer de suite).
 
+function createPostit(params) {
+    var postit=document.createElement('div');
+    postit.classList.add('postit')
+    // ajout d'une classe dans la la liste de classe d'un élément. On peut aussi remplacer add par remove
+    postit.innerHTML='Non nouveau postit'
+}
