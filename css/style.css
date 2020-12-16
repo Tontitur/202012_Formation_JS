@@ -60,6 +60,7 @@ h2 {
     display: inline-block;
     /* display: inline-block; => permet de conserver le format bloc tout en mettant plusieurs par ligne si possible */
     margin-left: 15px;
+    margin-bottom: 15px;
     /* Margin = marge externe */
     padding: 10px;
     /* padding = marge interne */
@@ -89,4 +90,9 @@ h2 {
         background-image: none;
         background-color: teal;
     }
+}
+
+#list>*{
+    /* style s'appliquant à tous les enfants de list */
+    vertical-align: top;
 }

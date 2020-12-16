@@ -34,9 +34,24 @@ function formSubmited(evt) {
 // // A cette balise j'appelle une fonction d'écouteur d'evenement. 
 // // Je donne un nom à cette fonction : submit. Puis je lui dis quelle fonction à executer (sans l'executer de suite).
 
-function createPostit(params) {
+/**
+ * Fonction de creation d'un postit avec ajout dans la baliste #list
+ * @param {string} titre titre de la note
+ * @param {string} date date ISO AAAA-MM-JJ
+ * @param {string} heure heure ISO HH:MM:SS
+ * @param {string} description creation de la note
+ */
+function createPostit(titre,date,heure,description) {
     var postit=document.createElement('div');
-    postit.classList.add('postit')
+    postit.classList.add('postit');
     // ajout d'une classe dans la la liste de classe d'un élément. On peut aussi remplacer add par remove
-    postit.innerHTML='Non nouveau postit'
+    postit.innerHTML='<div class="postit-titre">'+titre+'<br /></div>\
+    <span class="datetime">date : '+date+' </span><span class="datetime">heure : '+heure+'</span>\
+    <h2>Description :</h2>'+description;
+
+    var liste=document.querySelector('#list');
+    // selection de la liste de postit -> Reprise de la classe list
+
+    list.append(postit);
+    //ajout dans la liste de l'élement 
 }
