@@ -4,7 +4,8 @@
   "description": "Formation Orsys Javascript 2020",
   "main": "index.js",
   "scripts": {
-    "test": "lite-server"
+    "test": "lite-server",
+    "start": "lite-server"
   },
   "repository": {
     "type": "git",
