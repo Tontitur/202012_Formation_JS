@@ -58,7 +58,8 @@ var Crud = function (baseurl) {
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', baseurl + ressourceUrl);
         xhr.onreadystatechange = function (evt) {
-            if (xhr.readyState < 4 || xhr.status == 200) { return; }
+            if (xhr.readyState < 4 || xhr.status != 200) { return; }
+            clbk();
         };
         xhr.send();
     }

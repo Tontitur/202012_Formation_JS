@@ -6,14 +6,14 @@ addEventListener('load', function (evt) {
     //cette fonction dit d'exercer toutes les fonctions de la page 
 
     //chargement initial des postit
-    (new Crud(BASE_URL)).recuperer('/postit',function(mesPostIts){
-        console.log('J\'ai fini de recevoir mes postit voici la liste:',mesPostIts);
+    (new Crud(BASE_URL)).recuperer('/postit', function (mesPostIts) {
+        console.log('J\'ai fini de recevoir mes postit voici la liste:', mesPostIts);
         mesPostIts.forEach(function (postit) {
-            console.log(postit,postit.datetime);
+            console.log(postit, postit.datetime);
             createPostitByObject(postit);
         });
     });
-    
+
 })
 
 // declaration d'une fonction
@@ -86,11 +86,11 @@ function createPostit(titre, date, heure, description) {
 function createPostitByObject(postitInput) {
     var postit = document.createElement('div');
     //creation de l'id de balise en lien avec l'id du postit dans le reste pour faciliter la suppression
-    postit.id='postit-'+postitInput.id;
+    postit.id = 'postit-' + postitInput.id;
     postit.classList.add('postit');
     postit.innerHTML = '<div class="close"><img src="img/close.png" /></div>\
     <div class="postit-titre">'+ postitInput.titre + '<br /></div>\
-    date : <span class="datetime">'+ postitInput.datetime.substring(0,10) + ' </span><span class="datetime">heure : ' + postitInput.datetime.substring(11) + '</span>\
+    date : <span class="datetime">'+ postitInput.datetime.substring(0, 10) + ' </span><span class="datetime">heure : ' + postitInput.datetime.substring(11) + '</span>\
     <h2>Description :</h2>'+ postitInput.description;
 
     postit.querySelector('.close img').addEventListener('click', deletePostit)
@@ -106,9 +106,9 @@ function deletePostit(evt) {
     console.log('evenement lié à la suppression d\'une note', evt)
     //cette fonction affiche dans la console d'un clic
     var domPostitId = evt.path[2].id.substring(7);
-    (new Crud(BASE_URL)).supprimer('/postit'+domPostitId);
-
-
+    (new Crud(BASE_URL)).supprimer('/postit' + domPostitId, function () {
+        evt.path[2].remove();
+    });
     // evt.currentTarget.parentElement.parentElement.remove();
     //cette fonction permet de supprimer le parent du parent de l'élément sélectionné : image dans .close dans .postit
     // pour supprimer l'ensemble du postit
