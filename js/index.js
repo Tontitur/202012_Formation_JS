@@ -9,8 +9,8 @@ addEventListener('load', function (evt) {
     (new Crud(BASE_URL)).recuperer('/postit',function(mesPostIts){
         console.log('J\'ai fini de recevoir mes postit voici la liste:',mesPostIts);
         mesPostIts.forEach(function (postit) {
-            console.log(postit);
-            createPostit(postit.titre,postit.datetime.substring(0,10),postit.datetime.substring(12,8),postit.description)
+            console.log(postit,postit.datetime);
+            createPostitByObject(postit);
         });
     });
     
@@ -70,6 +70,29 @@ function createPostit(titre, date, heure, description) {
     <h2>Description :</h2>'+ description;
 
     //selection à partir postit de .close img, puis addEventListener('click',deletePostit)
+    postit.querySelector('.close img').addEventListener('click', deletePostit)
+
+    var liste = document.querySelector('#list');
+    // selection de la liste de postit -> Reprise de la classe list
+
+    list.append(postit);
+    //ajout dans la liste de l'élement 
+}
+
+/**
+ * Fonction de création d'un postit avec ajout dans la balise div#list par le biais d'un objet postit complet
+ * @param {Object} postitInput
+ */
+function createPostitByObject(postitInput) {
+    var postit = document.createElement('div');
+    //creation de l'id de balise en lien avec l'id du postit dans le reste pour faciliter la suppression
+    postit.id='postit-'+postitInput.id;
+    postit.classList.add('postit');
+    postit.innerHTML = '<div class="close"><img src="img/close.png" /></div>\
+    <div class="postit-titre">'+ postitInput.titre + '<br /></div>\
+    date : <span class="datetime">'+ postitInput.datetime.substring(0,10) + ' </span><span class="datetime">heure : ' + postitInput.datetime.substring(11) + '</span>\
+    <h2>Description :</h2>'+ postitInput.description;
+
     postit.querySelector('.close img').addEventListener('click', deletePostit)
 
     var liste = document.querySelector('#list');
