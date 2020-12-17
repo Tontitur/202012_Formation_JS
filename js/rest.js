@@ -12,7 +12,7 @@ var Crud=function (baseurl) {
  * Permet l'appel HTTP avec XMLHttRequest
  * @param {ressourceUrl} ressourceUrl chemin de la ressource
  */
-function get(ressourceUrl) {
+function get(ressourceUrl,clbk) {
     //instanciation de XHR
     var xhr=new XMLHttpRequest();
     //ouverture de la connexion
@@ -23,6 +23,7 @@ xhr.onreadystatechange=function (evt){
     if(evt.currentTarget.readyState < XMLHttpRequest.DONE){return;}
     var objt=JSON.parse(evt.currentTarget.response);
     console.log(objt);
+    clbk(objt);
 };
 //envoi de la requete
 xhr.send();

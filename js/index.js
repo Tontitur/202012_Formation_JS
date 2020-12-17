@@ -1,9 +1,19 @@
 // alert('le fichier est bien en place');
 addEventListener('load', function (evt) {
     initialisationJS('Arthur');
-    document.querySelector('form').addEventListener('submit', formSubmited)
+    document.querySelector('form').addEventListener('submit', formSubmited);
     //on crée une fontion anonyme(qui ne pourra pas être ré-executée) lors de l'évenement chargement complet du DOM.
     //cette fonction dit d'exercer toutes les fonctions de la page 
+
+    //chargement initial des postit
+    (new Crud(BASE_URL)).recuperer('/postit',function(mesPostIts){
+        console.log('J\'ai fini de recevoir mes postit voici la liste:',mesPostIts);
+        mesPostIts.forEach(function (postit) {
+            console.log(postit);
+            createPostit(postit.titre,postit.datetime.substring(0,10),postit.datetime.substring(12,8),postit.description);
+        });
+    });
+
 });
 
 // declaration d'une fonction
