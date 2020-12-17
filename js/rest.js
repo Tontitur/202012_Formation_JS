@@ -82,4 +82,10 @@ function put(ressourceUrl, ressource) {
     //transformation avec stingify du contenu Objet en JSON
     xhr.send(JSON.stringify(ressource));
 }
+// zone d'exposition des fonction en public
+// pour accès depuis l'extérieur de l'instance
+this.recuperer=get;
+this.creer=post;
+this.mettreAJour=put;
+this.supprimer=remove;
 }
