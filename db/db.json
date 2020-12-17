@@ -1,0 +1,22 @@
+{
+  "postit": [
+    {
+      "id": 0,
+      "titre": "Mon 1er postit",
+      "datetime": "2020-12-17T10:06:00",
+      "description": "La description du postit"
+    },
+    {
+      "id": 1,
+      "titre": "Mon 2e postit",
+      "datetime": "2020-12-17T11:20:00",
+      "description": "La description du postit"
+    }
+  ],
+  "proprietaire": {
+    "nom": "LE BRIS",
+    "prenom": "Arthur",
+    "mail": "alebris.sejer@gmail.com",
+    "tel": "0649526912"
+  }
+}
