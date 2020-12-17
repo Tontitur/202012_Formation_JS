@@ -106,7 +106,7 @@ function deletePostit(evt) {
     console.log('evenement lié à la suppression d\'une note', evt)
     //cette fonction affiche dans la console d'un clic
     var domPostitId = evt.path[2].id.substring(7);
-    (new Crud(BASE_URL)).supprimer('/postit' + domPostitId, function () {
+    (new Crud(BASE_URL)).supprimer('/postit/' + domPostitId, function () {
         evt.path[2].remove();
     });
     // evt.currentTarget.parentElement.parentElement.remove();
