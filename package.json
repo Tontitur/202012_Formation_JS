@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Tontitur/202012_Formation_JS_Arthur#readme",
   "dependencies": {
+    "json-server": "^0.16.3",
     "lite-server": "^2.6.1",
     "moment": "^2.29.1",
     "required": "^1.0.0"

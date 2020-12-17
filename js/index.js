@@ -58,9 +58,9 @@ function createPostit(titre, date, heure, description) {
     <div class="postit-titre">'+ titre + '<br /></div>\
     <span class="datetime">date : '+ date + ' </span><span class="datetime">heure : ' + heure + '</span>\
     <h2>Description :</h2>'+ description;
-    
+
     //selection à partir postit de .close img, puis addEventListener('click',deletePostit)
-postit.querySelector('.close img').addEventListener('click',deletePostit)
+    postit.querySelector('.close img').addEventListener('click', deletePostit)
 
     var liste = document.querySelector('#list');
     // selection de la liste de postit -> Reprise de la classe list
