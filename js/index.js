@@ -105,7 +105,11 @@ function createPostitByObject(postitInput) {
 function deletePostit(evt) {
     console.log('evenement lié à la suppression d\'une note', evt)
     //cette fonction affiche dans la console d'un clic
-    evt.currentTarget.parentElement.parentElement.remove();
+    var domPostitId = evt.path[2].id.substring(7);
+    (new Crud(BASE_URL)).supprimer('/postit'+domPostitId);
+
+
+    // evt.currentTarget.parentElement.parentElement.remove();
     //cette fonction permet de supprimer le parent du parent de l'élément sélectionné : image dans .close dans .postit
     // pour supprimer l'ensemble du postit
 }
