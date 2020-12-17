@@ -10,11 +10,11 @@ addEventListener('load', function (evt) {
         console.log('J\'ai fini de recevoir mes postit voici la liste:',mesPostIts);
         mesPostIts.forEach(function (postit) {
             console.log(postit);
-            createPostit(postit.titre,postit.datetime.substring(0,10),postit.datetime.substring(12,8),postit.description);
+            createPostit(postit.titre,postit.datetime.substring(0,10),postit.datetime.substring(12,8),postit.description)
         });
     });
-
-});
+    
+})
 
 // declaration d'une fonction
 function initialisationJS(prenom) {
