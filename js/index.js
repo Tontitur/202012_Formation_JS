@@ -30,6 +30,7 @@ function initialisationJS(prenom) {
 // usage d'une fonction
 initialisationJS('Arthur');
 // on définit que la variable prenom à pour cette initialisation la valeur 'Arthur'
+
 function formSubmited(evt) {
     evt.preventDefault();
     // C'est une fonction qui demande de ne pas faire le fonctionnement normal : rechargement de la page
@@ -40,12 +41,17 @@ function formSubmited(evt) {
     console.log(evt.target[3].value);
     var monFormulaire = document.forms['form-editor'];
     // var dareFormated=moment(monFormulaire['date'].value,'DD MM YYYY')
-    createPostit(
-        monFormulaire['title'].value,
-        monFormulaire['date'].value,
-        monFormulaire['time'].value,
-        monFormulaire['description'].value
-    );
+    //constitution de l'objet à envoyer au rest
+    var postit={
+        titre:monFormulaire["title"].value,
+        datetime:evt.target[1].value+'T'+evt.target[2].value,
+        description:evt.target[3].value    
+    };
+    console.log(postit);
+    //appel rest pour l'ajout dans la liste et recup de l'id
+    (new Crud(BASE_URL)).creer('/postit',postit,function(objSaved){
+        createPostitByObject(objSaved);
+    });
 
 }
 // document.querySelector('form').addEventListener('submit',formSubmited)
