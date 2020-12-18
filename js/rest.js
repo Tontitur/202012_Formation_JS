@@ -35,7 +35,7 @@ var Crud = function (baseurl) {
      * @param {Object} ressource data à envoyer
      * @param {function} clbk fonction de callback avec injection du retour
      */
-    function _post(ressourceUrl, ressource,clbk) {
+    function _post(ressourceUrl, ressource, clbk) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', baseurl + ressourceUrl);
         //specification du type contenu
@@ -43,7 +43,7 @@ var Crud = function (baseurl) {
         //specification de ce qui est attendu en retour
         xhr.setRequestHeader('Accept', 'application/json')
         xhr.onreadystatechange = function (evt) {
-            if (xhr.readyState < 4 || xhr.status!=201) { return; }
+            if (xhr.readyState < 4 || xhr.status != 201) { return; }
             console.log(JSON.parse(xhr.response));
             clbk(JSON.parse(xhr.response))
         }
@@ -71,7 +71,7 @@ var Crud = function (baseurl) {
      * @param {Uri} ressourceUrl le chemin d'accès à la ressource
      * @param {Object} ressource data à envoyer
      */
-    function _put(ressourceUrl, ressource) {
+    function _put(ressourceUrl, ressource,clbk) {
         var xhr = new XMLHttpRequest();
         xhr.open('PUT', baseurl + ressourceUrl);
         //specification du type contenu
@@ -79,8 +79,9 @@ var Crud = function (baseurl) {
         //specification de ce qui est attendu en retour
         xhr.setRequestHeader('Accept', 'application/json')
         xhr.onreadystatechange = function (evt) {
-            if (xhr.readyState < 4) { return; }
+            if (xhr.readyState < 4||xhr.status !== 200) { return; }
             console.log(JSON.parse(xhr.response));
+            clbk(JSON.parse(xhr.response));
         }
         //transformation avec stingify du contenu Objet en JSON
         xhr.send(JSON.stringify(ressource));
@@ -91,4 +92,18 @@ var Crud = function (baseurl) {
     this.creer = _post;
     this.mettreAJour = _put;
     this.supprimer = _remove;
+    /**
+     * Gestion d'envoi au serveur soit put (si id presen) soir post si pas d'id dans la ressource
+     * @param {Uri} ressourceUrl le chemin d'accès à la ressource
+     * @param {Object} ressource data à envoyer
+     * @param {function} clbk callback function
+     */
+    this.envoiRessource = function (ressourceUrl, ressource, clbk) {
+        if (undefined !== ressource.id) {
+            _put(ressourceUrl+'/'+ressource.id,ressource, clbk);
+        }
+        else {
+            _post(ressourceUrl, ressource, clbk);
+        }
+    }
 }

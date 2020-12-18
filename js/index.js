@@ -47,9 +47,16 @@ function formSubmited(evt) {
         datetime: monFormulaire["date"].value + 'T' + monFormulaire["time"].value,
         description: monFormulaire["description"].value
     };
+    if(monFormulaire['id'].value!==''){
+        postit.id=monFormulaire['id'].value;
+    }
     console.log(postit);
     //appel rest pour l'ajout dans la liste et recup de l'id
-    (new Crud(BASE_URL)).creer('/postit', postit, function (objSaved) {
+    (new Crud(BASE_URL)).envoiRessource('/postit', postit, function (objSaved) {
+        if(undefined !== postit.id)
+        {
+            document.querySelector('#postit-'+postit.id).remove();
+        }
         createPostitByObject(objSaved);
     });
 
