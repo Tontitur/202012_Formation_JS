@@ -12,7 +12,7 @@ var Crud = function (baseurl) {
      * Permet l'appel HTTP avec XMLHttRequest
      * @param {ressourceUrl} ressourceUrl chemin de la ressource
      */
-    function get(ressourceUrl, clbk) {
+    function _get(ressourceUrl, clbk) {
         //instanciation de XHR
         var xhr = new XMLHttpRequest();
         //ouverture de la connexion
@@ -34,7 +34,7 @@ var Crud = function (baseurl) {
      * @param {Uri} ressourceUrl le chemin d'accès à la ressource
      * @param {Object} ressource data à envoyer
      */
-    function post(ressourceUrl, ressource) {
+    function _post(ressourceUrl, ressource) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', baseurl + ressourceUrl);
         //specification du type contenu
@@ -54,7 +54,7 @@ var Crud = function (baseurl) {
      * @param {Uri} ressourceUrl adresse de la ressource
      * @param {Function} clbk fonction à executer à la fin de la suppression
      */
-    function remove(ressourceUrl, clbk) {
+    function _remove(ressourceUrl, clbk) {
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', baseurl + ressourceUrl);
         xhr.onreadystatechange = function (evt) {
@@ -69,7 +69,7 @@ var Crud = function (baseurl) {
      * @param {Uri} ressourceUrl le chemin d'accès à la ressource
      * @param {Object} ressource data à envoyer
      */
-    function put(ressourceUrl, ressource) {
+    function _put(ressourceUrl, ressource) {
         var xhr = new XMLHttpRequest();
         xhr.open('PUT', baseurl + ressourceUrl);
         //specification du type contenu
@@ -85,8 +85,8 @@ var Crud = function (baseurl) {
     }
     // zone d'exposition des fonction en public
     // pour accès depuis l'extérieur de l'instance
-    this.recuperer = get;
-    this.creer = post;
-    this.mettreAJour = put;
-    this.supprimer = remove;
+    this.recuperer = _get;
+    this.creer = _post;
+    this.mettreAJour = _put;
+    this.supprimer = _remove;
 }
