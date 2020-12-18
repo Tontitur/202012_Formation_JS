@@ -42,14 +42,14 @@ function formSubmited(evt) {
     var monFormulaire = document.forms['form-editor'];
     // var dareFormated=moment(monFormulaire['date'].value,'DD MM YYYY')
     //constitution de l'objet à envoyer au rest
-    var postit={
-        titre:monFormulaire["title"].value,
-        datetime:evt.target[1].value+'T'+evt.target[2].value,
-        description:evt.target[3].value    
+    var postit = {
+        titre: monFormulaire["title"].value,
+        datetime: evt.target[1].value + 'T' + evt.target[2].value,
+        description: evt.target[3].value
     };
     console.log(postit);
     //appel rest pour l'ajout dans la liste et recup de l'id
-    (new Crud(BASE_URL)).creer('/postit',postit,function(objSaved){
+    (new Crud(BASE_URL)).creer('/postit', postit, function (objSaved) {
         createPostitByObject(objSaved);
     });
 
@@ -94,6 +94,7 @@ function createPostitByObject(postitInput) {
     //creation de l'id de balise en lien avec l'id du postit dans le reste pour faciliter la suppression
     postit.id = 'postit-' + postitInput.id;
     postit.classList.add('postit');
+    postit.addEventListener('dblclick', putinformclickedpostit);
     postit.innerHTML = '<div class="close"><img src="img/close.png" /></div>\
     <div class="postit-titre">'+ postitInput.titre + '<br /></div>\
     date : <span class="datetime">'+ postitInput.datetime.substring(0, 10) + ' </span><span class="datetime">heure : ' + postitInput.datetime.substring(11) + '</span>\
@@ -109,6 +110,8 @@ function createPostitByObject(postitInput) {
 }
 
 function deletePostit(evt) {
+    evt.stopPropagation();
+    window.evt=evt;
     console.log('evenement lié à la suppression d\'une note', evt)
     //cette fonction affiche dans la console d'un clic
     var domPostitId = evt.path[2].id.substring(7);
@@ -118,4 +121,8 @@ function deletePostit(evt) {
     // evt.currentTarget.parentElement.parentElement.remove();
     //cette fonction permet de supprimer le parent du parent de l'élément sélectionné : image dans .close dans .postit
     // pour supprimer l'ensemble du postit
+}
+
+function putinformclickedpostit() {
+    console.log('j\'ai double cliqué sur un postit')
 }

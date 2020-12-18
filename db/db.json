@@ -7,16 +7,10 @@
       "description": "La description du postit"
     },
     {
-      "id": 1,
-      "titre": "Mon 2e postit",
-      "datetime": "2020-12-17T11:20:00",
-      "description": "La description du postit"
-    },
-    {
-      "titre": "ma note dynamique",
-      "datetime": "2020-02-01T00:00:00",
-      "description": "la description dynamique",
-      "id": 2
+      "titre": "Arthur",
+      "datetime": "2020-12-18T10:42",
+      "description": "Regarde ca marche",
+      "id": 1
     }
   ],
   "proprietaire": {
