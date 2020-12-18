@@ -19,7 +19,9 @@
         <div id="editor">
             <div id="formulaire">
                 <!-- onsubmit = on crée le déclenchement de la fonction formSubmited -->
-                <form name="form-editor">
+                <form name="editor-form">
+                    <input type="hidden" name="id"/>
+                    <!-- on ajoute un input qui sera caché -->
                     <h1>Titre de la note :</h1>
                     <input type="text" name="title" id="editor-title" placeholder="Saisissez le titre" /><br /><br />
                     <div style="display: inline-block;">

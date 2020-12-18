@@ -39,13 +39,13 @@ function formSubmited(evt) {
     console.log(evt.target[1].value);
     console.log(evt.target[2].value);
     console.log(evt.target[3].value);
-    var monFormulaire = document.forms['form-editor'];
+    var monFormulaire = document.forms['editor-form'];
     // var dareFormated=moment(monFormulaire['date'].value,'DD MM YYYY')
     //constitution de l'objet à envoyer au rest
     var postit = {
         titre: monFormulaire["title"].value,
-        datetime: evt.target[1].value + 'T' + evt.target[2].value,
-        description: evt.target[3].value
+        datetime: monFormulaire["date"].value + 'T' + monFormulaire["time"].value,
+        description: monFormulaire["description"].value
     };
     console.log(postit);
     //appel rest pour l'ajout dans la liste et recup de l'id
@@ -61,6 +61,7 @@ function formSubmited(evt) {
 
 /**
  * Fonction de creation d'un postit avec ajout dans la baliste #list
+ * Cette fonction n'est plus utilisée
  * @param {string} titre titre de la note
  * @param {string} date date ISO AAAA-MM-JJ
  * @param {string} heure heure ISO HH:MM:SS
@@ -97,9 +98,10 @@ function createPostitByObject(postitInput) {
     postit.addEventListener('dblclick', putinformclickedpostit);
     postit.innerHTML = '<div class="close"><img src="img/close.png" /></div>\
     <div class="postit-titre">'+ postitInput.titre + '<br /></div>\
-    date : <span class="datetime">'+ postitInput.datetime.substring(0, 10) + ' </span><span class="datetime">heure : ' + postitInput.datetime.substring(11) + '</span>\
-    <h2>Description :</h2>'+ postitInput.description;
-
+    date : <span class="datetime postit-date">'+ postitInput.datetime.substring(0, 10) + '</span> heure : <span class="datetime postit-heure">' + postitInput.datetime.substring(11) + '</span>\
+    <h2>Description :</h2><div class="postit-description">'+ postitInput.description; +'</div>';
+    //on a mis 2 class dans la balise div. Les deux class sont séparées par un espace. On peut mettre autant de class que l'on veut.
+    //Attention à ne pas finir par un espace => cela créerait une class vide
     postit.querySelector('.close img').addEventListener('click', deletePostit)
 
     var liste = document.querySelector('#list');
@@ -111,7 +113,8 @@ function createPostitByObject(postitInput) {
 
 function deletePostit(evt) {
     evt.stopPropagation();
-    window.evt=evt;
+    //permet d'éviter que l'évenement ne se propage pas. Car le bouton delete est dans le postit
+    window.evt = evt;
     console.log('evenement lié à la suppression d\'une note', evt)
     //cette fonction affiche dans la console d'un clic
     var domPostitId = evt.path[2].id.substring(7);
@@ -123,6 +126,19 @@ function deletePostit(evt) {
     // pour supprimer l'ensemble du postit
 }
 
-function putinformclickedpostit() {
-    console.log('j\'ai double cliqué sur un postit')
+function putinformclickedpostit(evt) {
+    console.log('j\'ai double cliqué sur un postit', evt)
+    var dompostit = evt.currentTarget;
+    console.log(
+        dompostit.id.substring(7),
+        dompostit.querySelector('.postit-titre').innerText,
+        dompostit.querySelector('.postit-date').innerText,
+        dompostit.querySelector('.postit-heure').innerText,
+        dompostit.querySelector('.postit-description').innerText,
+    );
+document.forms['editor-form']['id'].value=dompostit.id.substring(7);
+document.forms['editor-form']['title'].value=dompostit.querySelector('.postit-titre').innerText;
+document.forms['editor-form']['date'].value=dompostit.querySelector('.postit-date').innerText;
+document.forms['editor-form']['time'].value=dompostit.querySelector('.postit-heure').innerText;
+document.forms['editor-form']['description'].value=dompostit.querySelector('.postit-description').innerText;
 }
